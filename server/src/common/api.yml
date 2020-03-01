@@ -70,6 +70,15 @@ definitions:
           example: declined
 paths:
   /jobbooking:
+    get:
+      tags:
+        - JobBooking
+      description: Fetch all job booking
+      responses:
+        200:
+          description: Returns all job booking
+        404:
+          description: Job Booking not found.
     put:
       tags:
         - JobBooking

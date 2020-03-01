@@ -18,24 +18,33 @@ class JobBookingDatabase {
   }
 
   query( sql, args ) {
-    return new Promise( ( resolve, reject ) => {
-        this.connection.query( sql, args, ( err, rows ) => {
-            if ( err )
-                return reject( err );
-            resolve( rows );
-        } );
-    } );
-}
-close() {
-    return new Promise( ( resolve, reject ) => {
-        this.connection.end( err => {
-            if ( err )
-                return reject( err );
-            resolve();
-        } );
-    } );
-}
-   async getByStatus(status) {
+      return new Promise( ( resolve, reject ) => {
+          this.connection.query( sql, args, ( err, rows ) => {
+              if ( err )
+                  return reject( err );
+              resolve( rows );
+          } );
+      } );
+  }
+  close() {
+      return new Promise( ( resolve, reject ) => {
+          this.connection.end( err => {
+              if ( err )
+                  return reject( err );
+              resolve();
+          } );
+      } );
+  }
+  async getAll() {
+    let querys = "SELECT t1.id, t1.category_id, t1.status, t1.contact_name, t1.contact_phone, t1.contact_email, t1.price, t1.description, t1.created_at, t2.name AS location, t2.postcode, t3.name AS category " + 
+                  "FROM hipages.jobs t1 " + 
+                  "INNER JOIN hipages.suburbs t2 ON t1.suburb_id = t2.id " + 
+                  "INNER JOIN hipages.categories t3 ON t1.category_id = t3.id";
+    return this.query(querys)
+              .then(rows => rows)
+              .catch(er=> er);
+ }
+  async getByStatus(status) {
     let querys = "SELECT t1.id, t1.category_id, t1.status, t1.contact_name, t1.contact_phone, t1.contact_email, t1.price, t1.description, t1.created_at, t2.name AS location, t2.postcode, t3.name AS category " + 
                   "FROM hipages.jobs t1 " + 
                   "INNER JOIN hipages.suburbs t2 ON t1.suburb_id = t2.id " + 

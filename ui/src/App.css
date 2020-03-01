@@ -1,32 +1,122 @@
-.App {
+/* Settings */
+.App{
+  background-color: #ddd7d7;
+  padding: 5px;
+  width: 800px;
+  margin: auto;
+}
+.tabsheader .tab{
+  width: 50%;
+  display: inline-block;
+  padding: 14px 0;
+  box-shadow: 1px 0 0 transparent;
+}
+.tabsheader .tab.actived{
+  border-bottom: 4px solid #f89615;
+  font-weight: bold;
+}
+.floatleft{
+  float:left;
+}
+.textcenter{
   text-align: center;
 }
+.white {
+  background-color: #ffffff
+}
+.card{
+  margin: 15px;
+  color: #696464;
+}
+.card-section{
+  padding: 15px;
+}
+.card-image{
+  height: 40px;
+  width: 40px;
+  display: block;
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  border-radius: 50%;
+  background-color: #f89615;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 40px;
+  float:left;
+}
+.nametime{
+  display: inline;
+  float: left;
+  padding-left: 20px;
+}
+.card-name{
+  clear: both;
+  font-weight: bold;
+  color: #555;
+  text-align: left;
+}
+.card-time{
+  clear: both;
+  font-size: 0.8em;
+  color: #888;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.location-info div{
+  display: inline-block;
+  margin-right: 16px;
+  padding-top: 4px;
 }
-
-.App-link {
-  color: #61dafb;
+.line{
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+  border-bottom: 2px solid #b3afaf;
+  padding-top: 20px;
 }
+.description{
+  width: 84%;
+  text-align: left;
+}
+.button{
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border: none;
+  box-shadow: 0 5px #999;
+  margin: 5px;
+}
+.button-accept{
+  background-color: #f89615;
+  color: #ffffff;
+}
+.action-buttons{
+  clear: both;
+ display: inline-block;
+}
+.button:hover {background-color: #e6e1dc}
+.button-accept:hover {background-color: #c57205}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button:active {
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
+}
+.price{
+  font-weight: bold;
+  margin-left: 12px;
+}
+body{
+  font-family: Helvetica, sans-serif;
+}
+.contact-info{
+  margin-bottom: 8px;
+}
+.contact-detail{
+  display: inline-block;
+  margin-right: 16px;
+}
+.contact-detail a{
+  text-decoration: none;
+  color:#ff9000;
+  font-weight: bold;
 }
