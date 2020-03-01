@@ -1,0 +1,111 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Job-Booking
+  description: Job booking app
+basePath: /api/v1
+tags:
+  - name: Job Booking
+    description: Api endpoints
+  - name: Specification
+    description: The swagger API specification
+
+consumes:
+  - application/json
+produces:
+  - application/json
+definitions:
+  JobBooking:
+    type: object
+    title: Get JobBooking
+    properties:
+        id:
+          type: number
+          example: 1
+        category_id:
+          type: string
+          example: 1
+        status:
+          type: string
+          example: new
+        contact_name:
+          type: string
+          example: Luke Skywalker
+        contact_phone:
+          type: number
+          example: 0412345678
+        contact_email:
+          type: string
+          example: luke@mailinator.com
+        price:
+          type: number
+          example: 20
+        description:
+          type: string
+          example: Integer aliquam pulvinar odio ...
+        created_at:
+          type: string
+          example: 2020-02-27T19:52:31.000Z
+        location:
+          type: string
+          example: Sydney
+        postcode:
+          type: number
+          example: 2000
+        category:
+          type: string
+          example: Bathroom Renovation
+  JobBookingUpdate:
+    type: object
+    title: Update status
+    required:
+      - id
+      - status
+    properties:
+        id:
+          type: number
+          example: 1
+        status:
+          type: string
+          example: declined
+paths:
+  /jobbooking:
+    put:
+      tags:
+        - JobBooking
+      description: Update a existing job booking
+      parameters:
+        - name: jobbooking
+          in: body
+          description: an job booking to update
+          required: true
+          schema: 
+            $ref: "#/definitions/JobBookingUpdate"
+      responses:
+        200:
+          description: Job Booking was updated
+        404:
+          description: Job Booking not found.
+
+  /jobbooking/{status}:
+    get:
+      tags:
+        - JobBooking by status
+      parameters:
+        - name: status
+          in: path
+          required: true
+          description: The status of the job booking to retrieve
+          type: string
+      responses:
+        200:
+          description: Return the job booking with the specified status
+        404:
+          description: JobBooking not found
+  /spec:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification
